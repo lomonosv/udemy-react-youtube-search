@@ -1,0 +1,11 @@
+/node_modules
+bundle.js
+npm-debug.log
+package-lock.json
+.DS_Store
+
+# IntelliJ
+*.iml
+/.idea
+
+/src/api/google-api-key.js
