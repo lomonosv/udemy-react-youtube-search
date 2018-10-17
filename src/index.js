@@ -1,49 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import YTSearch from 'youtube-api-search';
-import _ from 'lodash';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-import { GOOGLE_API_KEY } from './api/google-api-key';
-import SearchBar from './components/SearchBar';
-import VideoList from './components/VideoList';
-import VideoDetail from './components/VideoDetail';
+import App from './app';
+import VideosReducer from './store/reducers/videos';
 
-class App extends Component {
-	constructor(props) {
-		super(props);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(VideosReducer, composeEnhancers(applyMiddleware(thunk)));
+const app = (
+	<Provider store={ store }>
+		<App />
+	</Provider>
+);
 
-		this.state = {
-			videos: [],
-			selectedVideo: null
-		};
-
-		this.videoSearch('');
-	}
-
-	videoSearch = term => {
-		YTSearch({
-			key: GOOGLE_API_KEY,
-			term: term
-		}, videos => this.setState({
-			videos: videos,
-			selectedVideo: videos[0]
-		}));
-	};
-
-	render() {
-		const videoSearch = _.debounce(term => this.videoSearch(term), 300);
-
-		return (
-			<div>
-				<SearchBar
-					onSearchTermChange={ videoSearch }/>
-				<VideoDetail video={ this.state.selectedVideo } />
-				<VideoList
-					onVideoSelect={ selectedVideo => this.setState({ selectedVideo }) }
-					videos={ this.state.videos } />
-			</div>
-		);
-	}
-}
-
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(app, document.querySelector('.container'));

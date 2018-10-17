@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class SearchBar extends Component {
-	state = {
-		term: ''
-	};
+import * as actions from '../store/actions/index';
 
-	handleInputChange = (e) => {
-		this.setState({
-			term: e.target.value
-		});
-		this.props.onSearchTermChange(e.target.value);
-	};
+const SearchBar = props => (
+	<div className="search-bar col-md-12">
+		<input
+			placeholder="Search"
+			type="text"
+			onChange={ e => props.searchVideos(e.target.value) } />
+	</div>
+);
 
-	render() {
-		return (
-			<div className="search-bar col-md-12">
-				<input
-					placeholder="Search"
-					type="text"
-					value={ this.state.term }
-					onChange={ this.handleInputChange } />
-			</div>
-		);
+const mapDispatchToProps = dispatch => {
+	return {
+		searchVideos: (term) => dispatch(actions.searchVideos(term))
 	}
-}
+};
 
-export default SearchBar;
+export default connect(null, mapDispatchToProps)(SearchBar);
