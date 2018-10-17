@@ -2,15 +2,53 @@ html body {
   background-color: #121212;
   color: #fff;
 }
-input {
+
+.search-bar {
+  margin: 20px 0;
+  text-align: center;
+}
+.search-bar input {
+  width: 100%;
   background: #000;
   border: 1px solid #303030;
   color: #fff;
+  padding: 0 5px;
 }
-ul {
+
+.video-item img {
+  max-width: 64px;
+}
+ul.list-group {
+  margin-top: -2px;
   background: transparent;
 }
-ul li.list-group-item {
+ul.list-group li.list-group-item {
+  cursor: pointer;
   background-color: #8883;
   border-color: #000;
+}
+ul li.list-group-item:hover {
+  background-color: #9993;
+}
+
+.loading-video-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  color: #a2a2a2;
+  font-size: 20px;
+}
+.video-detail .details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #303030;
+  border-radius: 4px;
+}
+.video-detail .details .title {
+  padding-bottom: 10px;
+}
+.video-detail .details .description {
+  font-size: 12px;
+  color: #8e8e8e;
 }

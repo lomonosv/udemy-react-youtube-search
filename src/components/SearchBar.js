@@ -13,8 +13,9 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="search-bar col-md-12">
 				<input
+					placeholder="Search"
 					type="text"
 					value={ this.state.term }
 					onChange={ this.handleInputChange } />

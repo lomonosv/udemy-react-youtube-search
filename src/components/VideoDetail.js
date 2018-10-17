@@ -2,7 +2,11 @@ import React from 'react';
 
 const VideoDetail = ({ video }) => {
 	if (!video) {
-		return <div>Loading...</div>;
+		return (
+			<div className="loading-video-detail col-md-8">
+				<div>Loading...</div>
+			</div>
+		);
 	}
 
 	const videoId = video.id.videoId;
@@ -14,8 +18,8 @@ const VideoDetail = ({ video }) => {
 				<iframe className="embed-responsive-item" src={ url }></iframe>
 			</div>
 			<div className="details">
-				<div>{ video.snippet.title }</div>
-				<div>{ video.snippet.description }</div>
+				<div className="title">{ video.snippet.title }</div>
+				<div className="description">{ video.snippet.description }</div>
 			</div>
 		</div>
 	)
