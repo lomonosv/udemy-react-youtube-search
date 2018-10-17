@@ -1,0 +1,16 @@
+html body {
+  background-color: #121212;
+  color: #fff;
+}
+input {
+  background: #000;
+  border: 1px solid #303030;
+  color: #fff;
+}
+ul {
+  background: transparent;
+}
+ul li.list-group-item {
+  background-color: #8883;
+  border-color: #000;
+}

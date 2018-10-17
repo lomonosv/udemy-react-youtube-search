@@ -18,7 +18,6 @@ class SearchBar extends Component {
 					type="text"
 					value={ this.state.term }
 					onChange={ this.handleInputChange } />
-				<p>{ this.state.term }</p>
 			</div>
 		);
 	}

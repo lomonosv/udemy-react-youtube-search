@@ -4,6 +4,8 @@ import YTSearch from 'youtube-api-search';
 
 import { GOOGLE_API_KEY } from './api/google-api-key';
 import SearchBar from './components/SearchBar';
+import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
 
 class App extends Component {
 	constructor(props) {
@@ -21,6 +23,8 @@ class App extends Component {
 		return (
 			<div>
 				<SearchBar />
+				<VideoDetail video={ this.state.videos[0] } />
+				<VideoList videos={ this.state.videos } />
 			</div>
 		);
 	}
